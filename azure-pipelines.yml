@@ -24,4 +24,9 @@ steps:
     command: 'publish'
     publishWebProjects: true
 
+- task: CopyFiles@2
+  inputs:
+    targetFolder: '$(Build.ArtifactStagingDirectory)'    
+- task: PublishBuildArtifacts@1
+
 
