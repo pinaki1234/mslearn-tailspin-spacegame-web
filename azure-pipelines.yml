@@ -9,11 +9,6 @@ trigger:
 pool:
   vmImage: 'windows-latest'
 
-variables:
-  solution: '**/*.sln'
-  buildPlatform: 'Any CPU'
-  buildConfiguration: 'Release'
-
 steps:
 - task: DotNetCoreCLI@2
   inputs:
@@ -27,8 +22,7 @@ steps:
 
 
 
-- task: PublishBuildArtifacts@1
+- task: CopyFiles@2
   inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    ArtifactName: 'drop'
-    publishLocation: 'Container'
+    targetFolder: '$(Build.ArtifactStagingDirectory)'    
+- task: PublishBuildArtifacts@1
